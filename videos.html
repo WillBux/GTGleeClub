@@ -3,6 +3,7 @@
 	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="css/custom.css">-->
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -10,6 +11,7 @@
 	<nav>
 		<div>
 			<ul>
+				<li><a href="index.html">Home</a></li>
 				<li><a href="about.html">About</a></li>
 				<li><a href="videos.html">Videos</a></li>
 				<li><a href="events.html">Events</a></li>
@@ -18,11 +20,24 @@
 			</ul>
 		</div>
 	</nav>
-	<div>
-		<p>Something, soon.</p>
+	<div id="videos">
+		<gcvideo
+			v-for="item in songs"
+      		v-bind:videoprop="item"
+      		v-bind:key="item.id"
+      		v-if="item.links.length">
+      			<ul>
+      				<li
+      					v-for="link in item.links"
+      					v-bind:linkprop="link"
+      					v-bind:key="link.id">
+      				</li>
+      			</ul>
+      	</gcvideo>
 	</div><!-- container -->
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>-->
-	<script type="text/javascript" src="js/js.js"></script>
+	<script type="text/javascript" src="js/videos.js"></script>
+	<script type="text/javascript" src="samplerep.js"></script>
 </body>
 </html>
