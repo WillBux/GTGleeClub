@@ -22,7 +22,7 @@
 	</nav>
 	<div id="videos">
 		<ul>
-			<li v-for="video in songs">
+			<li v-for="video in songs" v-if="video.links.length">
 				{{video.title}}
 				<ul>
 					<li v-for="link in video.links">
