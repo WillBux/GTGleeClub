@@ -21,19 +21,16 @@
 		</div>
 	</nav>
 	<div id="videos">
-		<gcvideo
-			v-for="item in songs"
-      		v-bind:videoprop="item"
-      		v-bind:key="item.id"
-      		v-if="item.links.length">
-      			<ul>
-      				<li
-      					v-for="link in item.links"
-      					v-bind:linkprop="link"
-      					v-bind:key="link.id">
-      				</li>
-      			</ul>
-      	</gcvideo>
+		<ul>
+			<li v-for="video in songs">
+				{{video.title}}
+				<ul>
+					<li v-for="link in video.links">
+						<a :href="'https://www.youtube.com/watch?v='+link.ytid">{{link.name}}</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
 	</div><!-- container -->
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>-->
