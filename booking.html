@@ -1,74 +1,146 @@
+<!DOCTYPE html>
 <html>
 <head>
 	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="css/custom.css">-->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-	<nav>
-		<div>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="videos.html">Videos</a></li>
-				<li><a href="events.html">Events</a></li>
-				<li><a href="booking.html">Booking</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</div>
+	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+	  <div class="navbar-brand">
+	    <a class="navbar-item" href="index.html">
+	      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+	    </a>
+
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	  </div>
+	  <div class="navbar-menu">
+	    <div class="navbar-start">
+			<a class="navbar-item" href="about.html">About</a>
+			<a class="navbar-item" href="videos.html">Videos</a>
+			<a class="navbar-item" href="events.html">Events</a>
+			<a class="navbar-item is-active" href="booking.html">Booking</a>
+			<a class="navbar-item" href="contact.html">Contact</a>
+	    </div>
+
+	    <div class="navbar-end">
+	      <!-- navbar items -->
+	    </div>
+	  </div>
 	</nav>
+
 	<div><!-- container -->
-		<div>
-			<h1>Book the Glee Club</h1>
-			<p>Interested in having the Georgia Tech Glee Club perform at your next stadium tour/bar mitzvah/book club meeting? Fill out the form below and someone will be in touch with you as soon as possible (when ME 2110 homework is done. Well...done enough, anyway).</p>
-		</div>
-		<div>
-			<form>
-				<h2>Contact Info</h2>
-				<h3>Organization</h3>
-				<p>What is your organization or group? Or is it just you? (This is a no-judgement zone)</p>
-				<input type="text">
+		<section class="section">
+		    <div class="container">
+		      <h1 class="title">Book the Glee Club</h1>
+		      <p class="subtitle">Interested in having the Georgia Tech Glee Club perform at your next stadium tour/bar mitzvah/book club meeting? Fill out the form below and someone will be in touch with you as soon as possible (when ME 2110 homework is done. Well...done enough, anyway).</p>
+		    </div>
+		  </section>
+		<section class="section">
+			<div id="booking" class="container">
+				<form v-on:submit.prevent="submitForm">
+					<h2 class="is-size-2">Contact Info</h2>
+					<div class="field">
+					  <label class="label">Organization</label>
+					  <div class="control">
+					    <input class="input" type="text" placeholder="book club meeting" v-model="bookingOrg">
+					  </div>
+					  <p class="help">What is your organization or group? Or is it just you? (This is a no-judgement zone)</p>
+					</div>
 
-				<h3>Contact Name</h3>
-				<p>It's probably you, but maybe not?</p>
-				<input type="text">
+					<div class="field">
+					  <label class="label">Contact Name</label>
+					  <div class="control">
+					    <input class="input" type="text" placeholder="George Burdell" v-model="bookingContactName">
+					  </div>
+					  <p class="help">It's probably you, but maybe not?</p>
+					</div>
 
-				<h3>Contact Phone Number</h3>
-				<p>We don't necessarily need a phone number, but it's nice.</p>
-				<input type="text">
+					<div class="field">
+					  <label class="label">Contact Phone Number</label>
+					  <div class="control">
+					    <input class="input" type="text" placeholder="678-867-5309" v-model="bookingContactPhoneNumber">
+					  </div>
+					  <p class="help">We don't necessarily need a phone number, but it's nice.</p>
+					</div>
 
-				<h3>Contact Email</h3>
-				<p>We really need an email though like for real for real.</p>
-				<input type="text">
+					<div class="field">
+					  <label class="label">Contact Email</label>
+					  <div class="control">
+					    <input class="input" type="text" placeholder="gburdell3@gatech.edu" v-model="bookingContactEmail">
+					  </div>
+					  <p class="help">We really need an email though like for real for real.</p>
+					</div>
 
-				<h2>Event Info</h2>
-				<h3>Name of Event</h3>
-				<p>Name or short description e.g., "Smith Wedding," "Raising of Beelzebub during the Winter Solstice"</p>
-				<input type="text">
+					<h2 class="is-size-2">Event Info</h2>
+					<div class="field">
+					  <label class="label">Name of Event</label>
+					  <div class="control">
+					    <input class="input" type="text" placeholder='"Smith Wedding," "Raising of Beelzebub during the Winter Solstice"' v-model="bookingNameOfEvent">
+					  </div>
+					  <p class="help">Name or short description of the event</p>
+					</div>
 
-				<h3>Date of Event</h3>
-				<p>When is this again?</p>
-				<input type="date">
+					<div class="field">
+					  <label class="label">Date of Event</label>
+					  <div class="control">
+					    <input class="input" type="date" v-model="bookingDateOfEvent">
+					  </div>
+					  <p class="help">When is this again?</p>
+					</div>
 
-				<h3>Time of Event</h3>
-				<p>When will we be performing? Not set in stone, but give us an idea.</p>
-				<input type="time">
+					<div class="field">
+					  <label class="label">Time of Event</label>
+					  <div class="control">
+					    <input class="input" type="time" v-model="bookingTimeOfEvent">
+					  </div>
+					  <p class="help">When will we be performing? Not set in stone, but give us an idea.</p>
+					</div>
 
-				<h3>Location of Event</h3>
-				<p>Where dis</p>
-				<input type="text">
+					<div class="field">
+					  <label class="label">Location of Event</label>
+					  <div class="control">
+					    <input class="input" type="text" placeholder="Your mom's house" v-model="bookingLocationOfEvent">
+					  </div>
+					  <p class="help">Where dis</p>
+					</div>
 
-				<h3>Comments</h3>
-				<p>Comments, questions, concerns, exhaustive details, hopes and dreams, etc.</p>
-				<textarea></textarea>
-				<button>BLOOP IT!</button>
-			</form>
-		</div>
+					<div class="field">
+					  <label class="label">Comments</label>
+					  <div class="control">
+					    <textarea class="textarea" type="text" placeholder="Your mom's house" v-model="bookingComments"></textarea>
+					  </div>
+					  <p class="help">Comments, questions, concerns, exhaustive details, hopes and dreams, etc.</p>
+					</div>
+
+					<div class="field">
+						<button class="button is-primary">BLOOP IT!</button>
+					</div>
+				</form>
+
+				<!-- <h2 class="is-size-2">Results</h2>
+				<p>bookingOrg: {{bookingOrg}}</p>
+				<p>bookingContactName: {{bookingContactName}}</p>
+				<p>bookingContactPhoneNumber: {{bookingContactPhoneNumber}}</p>
+				<p>bookingContactEmail: {{bookingContactEmail}}</p>
+				<p>bookingNameOfEvent: {{bookingNameOfEvent}}</p>
+				<p>bookingDateOfEvent: {{bookingDateOfEvent}}</p>
+				<p>bookingTimeOfEvent: {{bookingTimeOfEvent}}</p>
+				<p>bookingLocationOfEvent: {{bookingLocationOfEvent}}</p>
+				<p>bookingComments: {{bookingComments}}</p> -->
+			</div>
+		</section>
 	</div><!-- container -->
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>-->
-	<script type="text/javascript" src="js/js.js"></script>
+	<script type="text/javascript" src="js/booking.js"></script>
 </body>
 </html>
