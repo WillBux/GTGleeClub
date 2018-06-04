@@ -4,24 +4,51 @@
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="css/custom.css">-->
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-	<nav>
-		<div>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="videos.html">Videos</a></li>
-				<li><a href="events.html">Events</a></li>
-				<li><a href="booking.html">Booking</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</div>
+	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+	  <div class="navbar-brand">
+	    <a class="navbar-item" href="index.html">
+	      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+	    </a>
+
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	  </div>
+	  <div class="navbar-menu">
+	    <div class="navbar-start">
+			<a class="navbar-item" href="about.html">About</a>
+			<a class="navbar-item is-active" href="videos.html">Videos</a>
+			<a class="navbar-item" href="events.html">Events</a>
+			<a class="navbar-item" href="booking.html">Booking</a>
+			<a class="navbar-item" href="contact.html">Contact</a>
+	    </div>
+
+	    <div class="navbar-end">
+	      <!-- navbar items -->
+	    </div>
+	  </div>
 	</nav>
-	<div id="videos">
-		<ul>
+	<section class="section">
+	<div id="videos" class="container">
+		<h1 class="title">Videos</h1>
+		<table class="table is-fullwidth">
+			<tbody>
+				<tr v-for="video in songs" v-if="video.links.length">
+					<td>{{video.title}}</td>
+					<td>
+						<p v-for="link in video.links"><a target="_blank" :href="'https://www.youtube.com/watch?v='+link.ytid">{{link.name}}</a></p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- <ul>
 			<li v-for="video in songs" v-if="video.links.length">
 				{{video.title}}
 				<ul>
@@ -30,8 +57,9 @@
 					</li>
 				</ul>
 			</li>
-		</ul>
-	</div><!-- container -->
+		</ul>-->
+	</div><!-- videos -->
+	</section>
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>-->
 	<script type="text/javascript" src="js/videos.js"></script>

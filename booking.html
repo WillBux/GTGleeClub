@@ -43,7 +43,7 @@
 		      <h1 class="title">Book the Glee Club</h1>
 		      <p class="subtitle">Interested in having the Georgia Tech Glee Club perform at your next stadium tour/bar mitzvah/book club meeting? Fill out the form below and someone will be in touch with you as soon as possible (when ME 2110 homework is done. Well...done enough, anyway).</p>
 		    </div>
-		  </section>
+	  	</section>
 		<section class="section">
 			<div id="booking" class="container">
 				<form v-on:submit.prevent="submitForm">
@@ -51,7 +51,7 @@
 					<div class="field">
 					  <label class="label">Organization</label>
 					  <div class="control">
-					    <input class="input" type="text" placeholder="book club meeting" v-model="bookingOrg">
+					    <input class="input" type="text" placeholder="Arlen Book CLub" v-model="bookingOrg">
 					  </div>
 					  <p class="help">What is your organization or group? Or is it just you? (This is a no-judgement zone)</p>
 					</div>
@@ -116,7 +116,7 @@
 					<div class="field">
 					  <label class="label">Comments</label>
 					  <div class="control">
-					    <textarea class="textarea" type="text" placeholder="Your mom's house" v-model="bookingComments"></textarea>
+					    <textarea class="textarea" type="text" placeholder="Never read the comments" v-model="bookingComments"></textarea>
 					  </div>
 					  <p class="help">Comments, questions, concerns, exhaustive details, hopes and dreams, etc.</p>
 					</div>

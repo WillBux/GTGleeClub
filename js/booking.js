@@ -17,6 +17,7 @@ var bookingapp = new Vue({
   }, 
   methods:{
     submitForm: function(){
+      // console.log(this.bookingOrg);
       console.log("submitted");
     }
   }

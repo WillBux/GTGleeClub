@@ -2,35 +2,64 @@
 <head>
 	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-	<link rel="stylesheet" type="text/css" href="css/custom.css">-->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">-->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous"
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-	<nav>
-		<div>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="videos.html">Videos</a></li>
-				<li><a href="events.html">Events</a></li>
-				<li><a href="booking.html">Booking</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</div>
+	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+	  <div class="navbar-brand">
+	    <a class="navbar-item" href="index.html">
+	      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+	    </a>
+
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	  </div>
+	  <div class="navbar-menu">
+	    <div class="navbar-start">
+			<a class="navbar-item" href="about.html">About</a>
+			<a class="navbar-item" href="videos.html">Videos</a>
+			<a class="navbar-item" href="events.html">Events</a>
+			<a class="navbar-item" href="booking.html">Booking</a>
+			<a class="navbar-item is-active" href="contact.html">Contact</a>
+	    </div>
+
+	    <div class="navbar-end">
+	      <!-- navbar items -->
+	    </div>
+	  </div>
 	</nav>
 	<div>
-		<h1>Contact Us</h1>
-		<p>The Glee Club officers and directors are always more than happy to answer any questions you may have about our organization. Feel free to contact them at any time: <a href="mailto:gleeclub_officers@lists.gatech.edu">do us an email</a></p>
-
-		<h2>Like and Subscribe</h2>
-		<ul>
-			<li><a href="#">YouTube</a></li>
-			<li><a href="#">Instabook</a></li>
-			<li><a href="#">Faceplace</a></li>
-			<li><a href="#">Buttchat</a></li>
-			<li><a href="#">Twatter</a></li>
-		</ul>
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Contact Us</h1>
+				<p>The Glee Club officers and directors are always more than happy to answer any questions you may have about our organization. Feel free to contact them at any time:</p>
+				<a class="button" href="mailto:gleeclub_officers@lists.gatech.edu">
+					<span class="icon is-small">
+      					<i class="far fa-envelope"></i>
+    				</span>
+    				<span>do up an email</span>
+    			</a>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Like and Subscribe</h1>
+				<ul>
+					<li><a href="#">YouTube</a></li>
+					<li><a href="#">Instabook</a></li>
+					<li><a href="#">Faceplace</a></li>
+					<li><a href="#">Buttchat</a></li>
+					<li><a href="#">Twatter</a></li>
+				</ul>
+			</div>
+		</section>
 	</div><!-- container -->
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>-->

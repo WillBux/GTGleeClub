@@ -3,59 +3,87 @@
 	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="css/custom.css">-->
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-	<nav>
-		<div>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="videos.html">Videos</a></li>
-				<li><a href="events.html">Events</a></li>
-				<li><a href="booking.html">Booking</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</div>
+	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+	  <div class="navbar-brand">
+	    <a class="navbar-item" href="index.html">
+	      <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+	    </a>
+
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	      <span aria-hidden="true"></span>
+	    </a>
+	  </div>
+	  <div class="navbar-menu">
+	    <div class="navbar-start">
+			<a class="navbar-item" href="about.html">About</a>
+			<a class="navbar-item" href="videos.html">Videos</a>
+			<a class="navbar-item" href="events.html">Events</a>
+			<a class="navbar-item" href="booking.html">Booking</a>
+			<a class="navbar-item" href="contact.html">Contact</a>
+	    </div>
+
+	    <div class="navbar-end">
+	      <!-- navbar items -->
+	    </div>
+	  </div>
 	</nav>
-	<div>
-		<div>
-			<h1>Georgia Tech Glee Club</h1>
-			<p>The Georgia Tech Glee Club formed as an all-male group in 1906, making it the oldest student organization on campus. Composed of graduate and undergraduate students, the members of the group represent all of the Institute's colleges. In recent years, the Glee Club has performed at prestigious events both at Georgia Tech and throughout the Atlanta community and has traveled to locations such as New York City, Hawaii, and the UK, spreading what it means to be a Ramblin' Wreck and a helluva engineer!</p>
+	<div> <!-- container -->
+		<section class="hero is-medium is-primary is-bold">
+		<div class="hero-body">
+			<div class="container">
+				<h1 class="title">The Georgia Tech Glee Club</h1>
+				<h2 class="subtitle">is gr9</h2>
+			</div>
 		</div>
-
-		<div>
-			<h2>Upcoming Events</h2>
-			<p>Come see us live at our next event!</p>
-			<p>See all the other events <a href="events.html">here</a>.</p>
-		</div>		
-
-		<div>
-			<h2>Be a Groupie</h2>
-			<p>Join the Glee Club Groupies mailing list to receive three or four emails a year about our major events, tours, and other big news. It's a great way to keep in touch with the happenings of the Glee Club with a minimal time commitment. You can unsubscribe at any time.</p>
-			<p>To subscribe, you need to send an email to the Gerogia Tech mailing list server. Click to get an auto-filled email and just hit send:</p>
-		</div>
-
-		<div>
-			<button><a href="mailto:sympa@lists.gatech.edu?subject=subscribe%20gleeclub_groupies">Become a Groupie</a></button>
-		</div>
-
-		<div>
-			<p>If that doesn't work, manually send an email to sympa@lists.gatech.edu with the subject line "subscribe gleeclub_groupies". Once you do this, you will receive an automated confirmation email with more information.</p>
-		</div>
-
-		<div>
-			<div>
-				<h2>Buy Our Shit</h2>
+		</section>
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Georgia Tech Glee Club</h1>
+				<p class="subtitle">The Georgia Tech Glee Club formed as an all-male group in 1906, making it the oldest student organization on campus. Composed of graduate and undergraduate students, the members of the group represent all of the Institute's colleges. In recent years, the Glee Club has performed at prestigious events both at Georgia Tech and throughout the Atlanta community and has traveled to locations such as New York City, Hawaii, and the UK, spreading what it means to be a Ramblin' Wreck and a helluva engineer!</p>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Upcoming Events</h1>
+				<p class="subtitle">Come see us live at our next event!</p>
+				<p>See all the other events <a href="events.html">here</a>.</p>
+			</div>
+		</section>
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Be a Groupie</h1>
+				<p class="subtitle ">Join the Glee Club Groupies mailing list to receive three or four emails a year about our major events, tours, and other big news. It's a great way to keep in touch with the happenings of the Glee Club with a minimal time commitment. You can unsubscribe at any time.</p>
+				<p>To subscribe, you need to send an email to the Gerogia Tech mailing list server. Click to get an auto-filled email and just hit send:</p>
+				<a class="button" href="mailto:sympa@lists.gatech.edu?subject=subscribe%20gleeclub_groupies">
+					<span class="icon is-small">
+      					<i class="far fa-envelope"></i>
+    				</span>
+    				<span>Become a Groupie</span>
+    			</a>
+				<p>If that doesn't work, manually send an email to sympa@lists.gatech.edu with the subject line "subscribe gleeclub_groupies". Once you do this, you will receive an automated confirmation email with more information.</p>
+			</div>
+		</section>	
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Buy Our Shit</h1>
 				<ul>
 					<li><a href="#">CD Baby</a></li>
 					<li><a href="#">iTunes</a></li>
 					<li><a href="#">Merch</a></li>
 				</ul>
 			</div>
-			<div>
-				<h2>Like and Subscribe</h2>
+		</section>
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Like and Subscribe</h1>
 				<ul>
 					<li><a href="#">YouTube</a></li>
 					<li><a href="#">Instabook</a></li>
@@ -64,7 +92,7 @@
 					<li><a href="#">Twatter</a></li>
 				</ul>
 			</div>
-		</div>
+		</section>
 	</div><!-- container -->
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>-->
