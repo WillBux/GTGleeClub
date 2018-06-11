@@ -45,3 +45,11 @@ var eventsapp = new Vue({
   el: '#events',
   data: events
 });
+
+axios.get('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents')
+	.then(function (response) {
+		console.log(response);
+	})
+	.catch(function (error) {
+		console.log(error);
+});
