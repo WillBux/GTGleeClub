@@ -4,6 +4,7 @@
 	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
 	<link rel="stylesheet" type="text/css" href="css/custom.css">-->
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/bulma.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -40,7 +41,7 @@
 		<h1 class="title">Videos</h1>
 		<table class="table is-fullwidth">
 			<tbody>
-				<tr v-for="video in songs" v-if="video.links.length">
+				<tr v-for="video in rep" v-if="video.links.length">
 					<td>{{video.title}}</td>
 					<td>
 						<p v-for="link in video.links"><a target="_blank" :href="'https://www.youtube.com/watch?v='+link.ytid">{{link.name}}</a></p>

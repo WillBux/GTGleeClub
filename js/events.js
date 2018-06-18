@@ -43,13 +43,22 @@ Vue.config.devtools = true;
 
 var eventsapp = new Vue({
   el: '#events',
-  data: events
-});
-
-axios.get('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents')
-	.then(function (response) {
-		console.log(response);
-	})
-	.catch(function (error) {
-		console.log(error);
+  data(){
+  	return{
+  		events: ''
+  	}
+  },
+  mounted(){
+  	var self = this;
+  	axios.get('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents')
+  		.then(function (response) {
+  			// console.log(response.data.events);
+  			// console.log(events.events);
+  			self.events = response.data.events;
+  		})
+  		.catch(function (error) {
+  			console.log(error);
+  			self.events = ":(";
+  	});
+  }
 });
