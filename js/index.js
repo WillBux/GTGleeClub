@@ -28,18 +28,18 @@ var indexapp = new Vue({
   },
   mounted(){
   	var self = this;
-  	axios.get('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents')
-  		.then(function (response) {
-  			// console.log(response.data.events);
-  			// console.log(self.events);
-  			self.events = [];
-  			self.events[0] = response.data.events[0];
-  			if(response.data.events[1]) self.events[1] = response.data.events[1];
-  			if(response.data.events[2]) self.events[2] = response.data.events[2];
-  		})
-  		.catch(function (error) {
-  			console.log(error);
-  			self.events = ":(";
-  	});
+    axios.post('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents', {
+      choir: 'glee'
+    })
+    .then(function (response) {
+      console.log(response);
+      self.events = [];
+      self.events[0] = response.data.events[0];
+      if(response.data.events[1]) self.events[1] = response.data.events[1];
+      if(response.data.events[2]) self.events[2] = response.data.events[2];
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 });

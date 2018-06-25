@@ -1,28 +1,6 @@
-// https://gleeclub.gatech.edu/dev/matt/api.php?action=events
 var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-var events = 
-	{"events":
-		[
-			{
-				"id":"2253",
-				"name":"Spring Semester Concert! Invite your friends!",
-				"time":"1523318490",
-				"location":"WV175",
-				"summary":"Come spend an evening with the Glee Club!",
-				"description":""
-			},
-			{
-				"id":"2254",
-				"name":"Eddie's Attic",
-				"time":"1523328400",
-				"location":"Eddie's Attic",
-				"summary":"It's Britney bitch (and also Agnes Scott)",
-				"description":""
-			}
-		],
-		"status":"ok"
-	};
+
 Vue.component('event', {
 	props:['eventprop'],
 	template: '<div class="event"><h3>{{eventprop.name}}</h3><p>{{humanTime(eventprop.time)}}</p><p class="location">{{eventprop.location}}</p><p>{{eventprop.description}}</p><p><a href="#">Put in your calendar and smoke it.</a></p></div>',
@@ -50,15 +28,15 @@ var eventsapp = new Vue({
   },
   mounted(){
   	var self = this;
-  	axios.get('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents')
-  		.then(function (response) {
-  			// console.log(response.data.events);
-  			// console.log(events.events);
-  			self.events = response.data.events;
-  		})
-  		.catch(function (error) {
-  			console.log(error);
-  			self.events = ":(";
+  	axios.post('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents', {
+  	  choir: 'glee'
+  	})
+  	.then(function (response) {
+  	  self.events = response.data.events;
+  	  console.log(response);
+  	})
+  	.catch(function (error) {
+  	  console.log(error);
   	});
   }
 });
