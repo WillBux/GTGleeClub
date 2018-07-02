@@ -13,14 +13,18 @@ var bookingapp = new Vue({
   		bookingTimeOfEvent: "",
   		bookingLocationOfEvent: "",
   		bookingComments: "",
-      submitted: true,
-      isLoading: true
+      submitted: false,
+      isLoading: false,
+      bookingOrgFailed: false,
+      bookingContactNameFailed: false,
+      bookingContactPhoneNumberFailed: false,
+      bookingContactEmailFailed: false
   	}
   }, 
   methods:{
     submitForm: function(){
       // console.log(this.bookingOrg);
-      console.log("submitted");
+      // console.log("submitted");
       this.isLoading = true;
 
       var self = this;
@@ -38,16 +42,44 @@ var bookingapp = new Vue({
       })
       .then(function (response) {
         console.log(response);
-        if(response.statusText == "OK" && response.status == 200){
+        if(response.data.status == "OK"){
           //do something nice for the user
-          console.log("we gucci fam");
-          self.submitted = false;
-          self.isLoading = true;
-        };
+          // console.log("we gucci fam");
+          self.submitted = true;
+          self.isLoading = false;
+          // console.log("submitted", self.submitted);
+          // console.log("isLoading", self.isLoading);
+        }
+        else{
+          //tell them what they did wrong
+          self.isLoading = false;
+          alert(response.data.message);
+        }
       })
       .catch(function (error) {
         console.log(error);
       });
+    },
+    checkBookingOrg: function(){
+      //check the org name
+      if(this.bookingOrg == "") this.bookingOrgFailed = true;
+      else this.bookingOrgFailed = false;
+    },
+    checkBookingContactName: function(){
+      //check the person's name
+      if(this.bookingContactName == "") this.bookingContactNameFailed = true;
+      else this.bookingContactNameFailed = false;
+    },
+    checkBookingContactPhoneNumber: function(){
+      //check the phone number
+      if(this.bookingContactPhoneNumber > 0) this.bookingContactPhoneNumberFailed = false;
+      else this.bookingContactPhoneNumberFailed = true;
+    },
+    checkBookingContactEmail: function(){
+      //check their email
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if(re.test(this.bookingContactEmail)) this.bookingContactEmailFailed = false;
+      else this.bookingContactEmailFailed = true;
     }
   }
 });

@@ -7,7 +7,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/bulma.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Georgia Tech Glee Club</title>
 </head>
@@ -15,7 +15,9 @@
 	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 	  <div class="navbar-brand">
 	    <a class="navbar-item" href="index.html">
-	      <img src="images/logo.jpg" alt="Glee Club: Definitely not a Choir">
+			<span class="icon is-small" style="width: 3vw;">
+				<i class="fas fa-home"></i>
+			</span>
 	    </a>
 
 	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -53,32 +55,36 @@
 					<div class="field">
 					  <label class="label">Organization</label>
 					  <div class="control">
-					    <input class="input" type="text" placeholder="Arlen Book Club" v-model="bookingOrg">
+					    <input class="input" type="text" placeholder="Arlen Book Club" v-model="bookingOrg" v-on:blur="checkBookingOrg" v-bind:class="{'is-danger': bookingOrgFailed}">
 					  </div>
+					  <p v-if="bookingOrgFailed" class="help is-danger">Required</p>
 					  <p class="help">What is your organization or group? Or is it just you? (This is a no-judgement zone)</p>
 					</div>
 
 					<div class="field">
 					  <label class="label">Contact Name</label>
 					  <div class="control">
-					    <input class="input" type="text" placeholder="George Burdell" v-model="bookingContactName">
+					    <input class="input" type="text" placeholder="George Burdell" v-model="bookingContactName" v-on:blur="checkBookingContactName" v-bind:class="{'is-danger':bookingContactNameFailed}">
 					  </div>
+					  <p v-if="bookingContactNameFailed" class="help is-danger">Required</p>
 					  <p class="help">It's probably you, but maybe not?</p>
 					</div>
 
 					<div class="field">
 					  <label class="label">Contact Phone Number</label>
 					  <div class="control">
-					    <input class="input" type="text" placeholder="678-867-5309" v-model="bookingContactPhoneNumber">
+					    <input class="input" type="text" placeholder="678-867-5309" v-model="bookingContactPhoneNumber" v-on:blur="checkBookingContactPhoneNumber" v-bind:class="{'is-danger':bookingContactPhoneNumberFailed}">
 					  </div>
+					  <p v-if="bookingContactPhoneNumberFailed" class="help is-danger">Required</p>
 					  <p class="help">We don't necessarily need a phone number, but it's nice.</p>
 					</div>
 
 					<div class="field">
 					  <label class="label">Contact Email</label>
 					  <div class="control">
-					    <input class="input" type="text" placeholder="gburdell3@gatech.edu" v-model="bookingContactEmail">
+					    <input class="input" type="text" placeholder="gburdell3@gatech.edu" v-model="bookingContactEmail" v-on:blur="checkBookingContactEmail" v-bind:class="{'is-danger':bookingContactEmailFailed}">
 					  </div>
+					  <p v-if="bookingContactEmailFailed" class="help is-danger">Required</p>
 					  <p class="help">We really need an email though like for real for real.</p>
 					</div>
 
@@ -86,7 +92,7 @@
 					<div class="field">
 					  <label class="label">Name of Event</label>
 					  <div class="control">
-					    <input class="input" type="text" placeholder='"Smith Wedding," "Raising of Beelzebub during the Winter Solstice"' v-model="bookingNameOfEvent">
+					    <input class="input" type="text" placeholder='"Smith Wedding," "Raising of Beelzebub on this Winter Solstice"' v-model="bookingNameOfEvent">
 					  </div>
 					  <p class="help">Name or short description of the event</p>
 					</div>
@@ -125,7 +131,7 @@
 
 					<div class="field">
 						<button class="button is-primary" v-if="submitted" disabled>You did it! Yay!</button>
-						<button class="button is-primary">BLOOP IT!</button>
+						<button class="button is-primary" v-else v-bind:class="{'is-loading': isLoading}">BLOOP IT!</button>
 					</div>
 				</form>
 
