@@ -4,6 +4,7 @@ var bookingapp = new Vue({
   el: '#booking',
   data: function(){
   	return {
+      burgerIsActive: false,
   		bookingOrg: "",
   		bookingContactName: "",
   		bookingContactPhoneNumber: "",
@@ -11,6 +12,7 @@ var bookingapp = new Vue({
   		bookingNameOfEvent: "",
   		bookingDateOfEvent: "",
   		bookingTimeOfEvent: "",
+      bookingDateOfEventUnix: 0,
   		bookingLocationOfEvent: "",
   		bookingComments: "",
       submitted: false,
@@ -18,7 +20,11 @@ var bookingapp = new Vue({
       bookingOrgFailed: false,
       bookingContactNameFailed: false,
       bookingContactPhoneNumberFailed: false,
-      bookingContactEmailFailed: false
+      bookingContactEmailFailed: false,
+      bookingNameOfEventFailed: false,
+      bookingDateOfEventFailed: false,
+      bookingTimeOfEventFailed: false,
+      bookingLocationOfEventFailed: false
   	}
   }, 
   methods:{
@@ -35,14 +41,13 @@ var bookingapp = new Vue({
         bookingContactPhoneNumber: self.bookingContactPhoneNumber,
         bookingContactEmail: self.bookingContactEmail,
         bookingNameOfEvent: self.bookingNameOfEvent,
-        bookingDateOfEvent: self.bookingDateOfEvent,
-        bookingTimeOfEvent: self.bookingTimeOfEvent,
+        bookingDateOfEventUnix: self.bookingDateOfEventUnix,
         bookingLocationOfEvent: self.bookingLocationOfEvent,
         bookingComments: self.bookingComments
       })
       .then(function (response) {
         console.log(response);
-        if(response.data.status == "OK"){
+        if(response.data.status == "ok"){
           //do something nice for the user
           // console.log("we gucci fam");
           self.submitted = true;
@@ -53,11 +58,11 @@ var bookingapp = new Vue({
         else{
           //tell them what they did wrong
           self.isLoading = false;
-          alert(response.data.message);
+          alert("Ummm something went wrong behind the scenes. Email us and tell us: "+response.data.message);
         }
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
     },
     checkBookingOrg: function(){
@@ -80,32 +85,35 @@ var bookingapp = new Vue({
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       if(re.test(this.bookingContactEmail)) this.bookingContactEmailFailed = false;
       else this.bookingContactEmailFailed = true;
+    },
+    checkBookingNameOfEvent: function(){
+      //check the name exists      
+      if(this.bookingNameOfEvent.length > 0) this.bookingNameOfEventFailed = false;
+      else this.bookingNameOfEventFailed = true;
+    },
+    checkBookingDateOfEvent: function(){
+      //is the date a date
+      //2018-07-16
+      if(moment(this.bookingDateOfEvent, "YYYY-MM-DD").format("X") > 0) this.bookingDateOfEventFailed = false;
+      else this.bookingDateOfEventFailed = true;
+    },
+    checkBookingTimeOfEvent: function(){
+      //check the time, what time is it?
+      //13:00
+      this.bookingDateOfEventUnix = moment(this.bookingDateOfEvent+" "+this.bookingTimeOfEvent, "YYYY-MM-DD HH:mm").format("X");
+      if(this.bookingDateOfEventUnix > 0){
+        this.bookingTimeOfEventFailed = false;
+      }
+      else{
+        bookingTimeOfEventFailed = true;
+        this.bookingDateOfEventUnix = 0;
+      }
+    },
+    checkBookingLocationOfEvent: function(){
+      //does it exist
+      if(this.bookingLocationOfEvent.length > 0) this.bookingLocationOfEventFailed = false;
+      else this.bookingLocationOfEventFailed = true;
     }
   }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-
-  // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-
-      });
-    });
-  }
-
-});
