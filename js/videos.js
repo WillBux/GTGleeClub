@@ -12,12 +12,13 @@ var videoapp = new Vue({
   el: '#videos',
   data(){
   	return {
-  		rep: ''
+  		rep: '',
+      burgerIsActive: false
   	}
   },
   mounted(){
   	var self = this;
-    axios.post('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicsongs', {
+    axios.post('https://gleeclub.gatech.edu/api.php?action=publicsongs', {
       choir: 'glee'
     })
     .then(function (response) {

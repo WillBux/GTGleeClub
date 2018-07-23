@@ -6,66 +6,67 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">-->
 	<link rel="stylesheet" type="text/css" href="css/bulma.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Georgia Tech Glee Club</title>
 </head>
 <body>
-	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-	  <div class="navbar-brand">
-	    <a class="navbar-item" href="index.html">
-		    <span class="icon is-small" style="width: 3vw;">
-				<i class="fas fa-home"></i>
-			</span>
-	    </a>
+	<div id="app">
+		<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+		  <div class="navbar-brand">
+		    <a class="navbar-item" href="index.html">
+			    <span class="icon is-small" style="width: 3vw;">
+					<i class="fas fa-home"></i>
+				</span>
+		    </a>
 
-	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	    </a>
-	  </div>
-	  <div class="navbar-menu">
-	    <div class="navbar-start">
-			<a class="navbar-item" href="about.html">About</a>
-			<a class="navbar-item" href="videos.html">Videos</a>
-			<a class="navbar-item" href="events.html">Events</a>
-			<a class="navbar-item" href="booking.html">Booking</a>
-			<a class="navbar-item is-active" href="contact.html">Contact</a>
-	    </div>
+		    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': burgerIsActive}" v-on:click="burgerIsActive = !burgerIsActive">
+		      <span aria-hidden="true"></span>
+		      <span aria-hidden="true"></span>
+		      <span aria-hidden="true"></span>
+		    </a>
+		  </div>
+		  <div class="navbar-menu" v-bind:class="{'is-active': burgerIsActive}">
+		    <div class="navbar-start">
+				<a class="navbar-item" href="about.html">About</a>
+				<a class="navbar-item" href="videos.html">Videos</a>
+				<a class="navbar-item" href="events.html">Events</a>
+				<a class="navbar-item" href="booking.html">Booking</a>
+				<a class="navbar-item is-active" href="contact.html">Contact</a>
+		    </div>
 
-	    <div class="navbar-end">
-	      <!-- navbar items -->
-	    </div>
-	  </div>
-	</nav>
-	<div>
-		<section class="section">
-			<div class="container">
-				<h1 class="title">Contact Us</h1>
-				<p>The Glee Club officers and directors are always more than happy to answer any questions you may have about our organization. Feel free to contact them at any time:</p>
-				<br><a class="button is-primary is-outlined" href="mailto:gleeclub_officers@lists.gatech.edu">
-					<span class="icon is-small">
-      					<i class="far fa-envelope"></i>
-    				</span>
-    				<span>do up an email</span>
-    			</a>
-			</div>
-		</section>
-		<section class="section">
-			<div class="container">
-				<h1 class="title">Like and Subscribe</h1>
-				<ul>
-					<li><a href="#">YouTube</a></li>
-					<li><a href="#">Instabook</a></li>
-					<li><a href="#">Faceplace</a></li>
-					<li><a href="#">Buttchat</a></li>
-					<li><a href="#">Twatter</a></li>
-				</ul>
-			</div>
-		</section>
-	</div><!-- container -->
-	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
-	<script type="text/javascript" src="js/js.js"></script>-->
+		    <div class="navbar-end">
+		      <!-- navbar items -->
+		    </div>
+		  </div>
+		</nav>
+		<div>
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Contact Us</h1>
+					<p>The Glee Club officers and directors are always more than happy to answer any questions you may have about our organization. Feel free to contact them at any time:</p>
+					<br><a class="button is-primary is-outlined" href="mailto:gleeclub_officers@lists.gatech.edu">
+						<span class="icon is-small">
+	      					<i class="far fa-envelope"></i>
+	    				</span>
+	    				<span>do up an email</span>
+	    			</a>
+				</div>
+			</section>
+			<section class="section">
+				<div class="container">
+					<h1 class="title">Like and Subscribe</h1>
+					<ul>
+						<li><a href="#">YouTube</a></li>
+						<li><a href="#">Instabook</a></li>
+						<li><a href="#">Faceplace</a></li>
+						<li><a href="#">Buttchat</a></li>
+						<li><a href="#">Twatter</a></li>
+					</ul>
+				</div>
+			</section>
+		</div><!-- container -->
+	</div><!-- vue -->
+	<script type="text/javascript" src="js/contact.js"></script>
 </body>
 </html>

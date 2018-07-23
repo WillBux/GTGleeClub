@@ -12,61 +12,61 @@
 	<title>Georgia Tech Glee Club</title>
 </head>
 <body>
-	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-	  <div class="navbar-brand">
-	    <a class="navbar-item" href="index.html">
-		<span class="icon is-small" style="width: 3vw;">
-			<i class="fas fa-home"></i>
-		</span>
-	    </a>
+	<div id="videos">
+		<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+		  <div class="navbar-brand">
+		    <a class="navbar-item" href="index.html">
+			<span class="icon is-small" style="width: 3vw;">
+				<i class="fas fa-home"></i>
+			</span>
+		    </a>
 
-	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	    </a>
-	  </div>
-	  <div class="navbar-menu">
-	    <div class="navbar-start">
-			<a class="navbar-item" href="about.html">About</a>
-			<a class="navbar-item is-active" href="videos.html">Videos</a>
-			<a class="navbar-item" href="events.html">Events</a>
-			<a class="navbar-item" href="booking.html">Booking</a>
-			<a class="navbar-item" href="contact.html">Contact</a>
-	    </div>
+		    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': burgerIsActive}" v-on:click="burgerIsActive = !burgerIsActive">
+		      <span aria-hidden="true"></span>
+		      <span aria-hidden="true"></span>
+		      <span aria-hidden="true"></span>
+		    </a>
+		  </div>
+		  <div class="navbar-menu" v-bind:class="{'is-active': burgerIsActive}">
+		    <div class="navbar-start">
+				<a class="navbar-item" href="about.html">About</a>
+				<a class="navbar-item is-active" href="videos.html">Videos</a>
+				<a class="navbar-item" href="events.html">Events</a>
+				<a class="navbar-item" href="booking.html">Booking</a>
+				<a class="navbar-item" href="contact.html">Contact</a>
+		    </div>
 
-	    <div class="navbar-end">
-	      <!-- navbar items -->
-	    </div>
-	  </div>
-	</nav>
-	<section class="section">
-	<div id="videos" class="container">
-		<h1 class="title">Videos</h1>
-		<table class="table is-fullwidth">
-			<tbody>
-				<tr v-for="video in rep" v-if="video.links.length">
-					<td>{{video.title}}</td>
-					<td>
-						<p v-for="link in video.links"><a target="_blank" :href="'https://www.youtube.com/watch?v='+link.ytid">{{link.name}}</a></p>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-		<!-- <ul>
-			<li v-for="video in songs" v-if="video.links.length">
-				{{video.title}}
-				<ul>
-					<li v-for="link in video.links">
-						<a :href="'https://www.youtube.com/watch?v='+link.ytid">{{link.name}}</a>
+		    <div class="navbar-end">
+		      <!-- navbar items -->
+		    </div>
+		  </div>
+		</nav>
+		<section class="section">
+			<div class="container">
+				<h1 class="title">Videos</h1>
+				<table class="table is-fullwidth">
+					<tbody>
+						<tr v-for="video in rep" v-if="video.links.length">
+							<td>{{video.title}}</td>
+							<td>
+								<p v-for="link in video.links"><a target="_blank" :href="'https://www.youtube.com/watch?v='+link.ytid">{{link.name}}</a></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- <ul>
+					<li v-for="video in songs" v-if="video.links.length">
+						{{video.title}}
+						<ul>
+							<li v-for="link in video.links">
+								<a :href="'https://www.youtube.com/watch?v='+link.ytid">{{link.name}}</a>
+							</li>
+						</ul>
 					</li>
-				</ul>
-			</li>
-		</ul>-->
-	</div><!-- videos -->
-	</section>
-	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>-->
+				</ul>-->
+			</div><!-- container -->
+		</section>
+	</div> <!-- vue -->
 	<script type="text/javascript" src="js/videos.js"></script>
 	<script type="text/javascript" src="samplerep.js"></script>
 </body>

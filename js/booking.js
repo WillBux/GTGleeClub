@@ -34,7 +34,7 @@ var bookingapp = new Vue({
       this.isLoading = true;
 
       var self = this;
-      axios.post('https://gleeclub.gatech.edu/dev/matt/api.php?action=gigreq', {
+      axios.post('https://gleeclub.gatech.edu/api.php?action=gigreq', {
         choir: 'glee',
         bookingOrg: self.bookingOrg,
         bookingContactName: self.bookingContactName,

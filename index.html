@@ -10,8 +10,12 @@
 	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Georgia Tech Glee Club</title>
+	<style type="text/css">
+		.has-bg-img { background: url('images/pic1.jpg')center center; background-size:cover; }
+	</style>
 </head>
 <body>
+	<div id="minievents">
 	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 	  <div class="navbar-brand">
 	    <a class="navbar-item" href="index.html">
@@ -20,13 +24,13 @@
 		</span>
 	    </a>
 
-	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': burgerIsActive}" v-on:click="burgerIsActive = !burgerIsActive">
 	      <span aria-hidden="true"></span>
 	      <span aria-hidden="true"></span>
 	      <span aria-hidden="true"></span>
 	    </a>
 	  </div>
-	  <div class="navbar-menu">
+	  <div class="navbar-menu" v-bind:class="{'is-active': burgerIsActive}">
 	    <div class="navbar-start">
 			<a class="navbar-item" href="about.html">About</a>
 			<a class="navbar-item" href="videos.html">Videos</a>
@@ -41,11 +45,11 @@
 	  </div>
 	</nav>
 	<div> <!-- container -->
-		<section class="hero is-medium is-primary is-bold">
+		<section class="hero is-medium is-bold has-bg-img">
 		<div class="hero-body">
 			<div class="container">
-				<h1 class="title">The Georgia Tech Glee Club</h1>
-				<h2 class="subtitle">is gr9</h2>
+				<!-- <h1 class="title" style="text-shadow:0px 0px 10px rgba(255,255,255,.5)">The Georgia Tech Glee Club</h1>
+				<h2 class="subtitle">is gr9</h2> -->
 			</div>
 		</div>
 		</section>
@@ -59,14 +63,15 @@
 			<div class="container">
 				<h1 class="title">Upcoming Events</h1>
 				<p class="subtitle">Come see us live at our next event!</p>
-				<div id="minievents">
-					<event
-						v-for="item in events"
-			      		v-bind:eventprop="item"
-			      		v-bind:key="item.id">
-			      	</event>
-				</div>
-				<br><p>See all the other events <a href="events.html">here</a>.</p>
+					<div v-if="thereAreEvents">
+						<event
+							v-for="item in events"
+				      		v-bind:eventprop="item"
+				      		v-bind:key="item.id">
+				      	</event>
+				      	<br><p>See all the other events <a href="events.html">here</a>.</p>
+			      </div>
+			      	<p v-else>We don't have anything coming up, but check back closer to when the semester is going to start.</p>
 			</div>
 		</section>
 		<section class="section">
@@ -85,11 +90,11 @@
 		</section>	
 		<section class="section">
 			<div class="container">
-				<h1 class="title">Buy Our Shit</h1>
+				<h1 class="title">Give Us Money via:</h1>
 				<ul>
-					<li><a href="#">CD Baby</a></li>
-					<li><a href="#">iTunes</a></li>
-					<li><a href="#">Merch</a></li>
+					<li><a target="_blank" href="https://store.cdbaby.com/cd/georgiatechgleeclub2">CD Baby</a></li>
+					<li><a target="_blank" href="https://itunes.apple.com/us/artist/georgia-tech-glee-club/488368538">iTunes</a></li>
+					<li>Come to a concert and buy a <span style="text-decoration:line-through;">beer</span> milk stein</li>
 				</ul>
 			</div>
 		</section>
@@ -97,17 +102,15 @@
 			<div class="container">
 				<h1 class="title">Like and Subscribe</h1>
 				<ul>
-					<li><a href="#">YouTube</a></li>
-					<li><a href="#">Instabook</a></li>
-					<li><a href="#">Faceplace</a></li>
-					<li><a href="#">Buttchat</a></li>
-					<li><a href="#">Twatter</a></li>
+					<li><a target="_blank" href="http://www.twitter.com/GTglee">YouTube</a></li>
+					<li><a target="_blank" href="http://www.youtube.com/user/gtgleeclub?feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/YouTube/40x40_yt_white.png">YouTube</a></li>
+					<li><a target="_blank" href="https://www.facebook.com/GTgleeclub/">Facebook</a></li>
+					<li><a target="_blank" href="https://www.instagram.com/gtglee/">Instagram</a></li>
 				</ul>
 			</div>
 		</section>
-	</div><!-- container -->
-	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>-->
+		</div><!-- container -->
+	</div><!-- vue -->
 	<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

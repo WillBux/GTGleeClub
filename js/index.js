@@ -23,18 +23,23 @@ var indexapp = new Vue({
   el: '#minievents',
   data(){
   	return{
-  		events: ''
+  		events: '',
+      burgerIsActive: false,
+      thereAreEvents: false
   	}
   },
   mounted(){
   	var self = this;
-    axios.post('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents', {
+    axios.post('https://gleeclub.gatech.edu/api.php?action=publicevents', {
       choir: 'glee'
     })
     .then(function (response) {
-      console.log(response);
+      // console.log(response);
       self.events = [];
-      self.events[0] = response.data.events[0];
+      if(response.data.events[0]){
+        self.events[0] = response.data.events[0];
+        self.thereAreEvents = true;
+      }
       if(response.data.events[1]) self.events[1] = response.data.events[1];
       if(response.data.events[2]) self.events[2] = response.data.events[2];
     })

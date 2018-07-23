@@ -11,6 +11,7 @@
 	<title>Georgia Tech Glee Club</title>
 </head>
 <body>
+	<div id="events">
 	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
 	  <div class="navbar-brand">
 	    <a class="navbar-item" href="index.html">
@@ -19,13 +20,13 @@
 			</span>
 	    </a>
 
-	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': burgerIsActive}" v-on:click="burgerIsActive = !burgerIsActive">
 	      <span aria-hidden="true"></span>
 	      <span aria-hidden="true"></span>
 	      <span aria-hidden="true"></span>
 	    </a>
 	  </div>
-	  <div class="navbar-menu">
+	  <div class="navbar-menu" v-bind:class="{'is-active': burgerIsActive}">
 	    <div class="navbar-start">
 			<a class="navbar-item" href="about.html">About</a>
 			<a class="navbar-item" href="videos.html">Videos</a>
@@ -41,16 +42,18 @@
 	</nav>
 	<section class="section">
 		<div id="container" class="container">
-			<div id="events">
-				<event
-					v-for="item in events"
-		      		v-bind:eventprop="item"
-		      		v-bind:key="item.id">
-		      	</event>
-			</div>
+			<div v-if="thereAreEvents">
+				<p>We perform all the time hither and thither, sometimes open to the public and sometimes not. Please come see us at any of the following events!</p>
+					<event
+						v-for="item in events"
+			      		v-bind:eventprop="item"
+			      		v-bind:key="item.id">
+			      	</event>
+		    </div>
+		    <p v-else>Looks like there aren't any events coming up that you can come to, but check back again soon!</p>
 		</div>
 	</section>
-	<!-- container -->
+	</div><!-- vue -->
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>-->
 	<script type="text/javascript" src="js/events.js"></script>

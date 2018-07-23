@@ -23,17 +23,20 @@ var eventsapp = new Vue({
   el: '#events',
   data(){
   	return{
-  		events: ''
+  		events: '',
+      burgerIsActive: false,
+      thereAreEvents: false
   	}
   },
   mounted(){
   	var self = this;
-  	axios.post('https://gleeclub.gatech.edu/dev/matt/api.php?action=publicevents', {
+  	axios.post('https://gleeclub.gatech.edu/api.php?action=publicevents', {
   	  choir: 'glee'
   	})
   	.then(function (response) {
   	  self.events = response.data.events;
-  	  console.log(response);
+      if(self.events.length) self.thereAreEvents = true;
+  	  // console.log(response);
   	})
   	.catch(function (error) {
   	  console.log(error);
