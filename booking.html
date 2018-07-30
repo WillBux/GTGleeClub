@@ -138,6 +138,7 @@
 					<div class="field">
 						<button class="button is-primary" v-if="submitted" disabled>You did it! Yay!</button>
 						<button class="button is-primary" v-else v-bind:class="{'is-loading': isLoading}">BLOOP IT!</button>
+						<p v-if="submitted">Oopsie did you eff it up? No worries, just <a v-bind:href="'mailto:gleeclub_officers@lists.gatech.edu?subject=' +bookingNameOfEvent+ '%20Follow%20Up'">email the officers</a> to clarify any points in your booking request.</p>
 					</div>
 				</form>
 

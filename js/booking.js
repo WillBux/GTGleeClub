@@ -31,39 +31,53 @@ var bookingapp = new Vue({
     submitForm: function(){
       // console.log(this.bookingOrg);
       // console.log("submitted");
-      this.isLoading = true;
 
-      var self = this;
-      axios.post('https://gleeclub.gatech.edu/api.php?action=gigreq', {
-        choir: 'glee',
-        bookingOrg: self.bookingOrg,
-        bookingContactName: self.bookingContactName,
-        bookingContactPhoneNumber: self.bookingContactPhoneNumber,
-        bookingContactEmail: self.bookingContactEmail,
-        bookingNameOfEvent: self.bookingNameOfEvent,
-        bookingDateOfEventUnix: self.bookingDateOfEventUnix,
-        bookingLocationOfEvent: self.bookingLocationOfEvent,
-        bookingComments: self.bookingComments
-      })
-      .then(function (response) {
-        console.log(response);
-        if(response.data.status == "ok"){
-          //do something nice for the user
-          // console.log("we gucci fam");
-          self.submitted = true;
-          self.isLoading = false;
-          // console.log("submitted", self.submitted);
-          // console.log("isLoading", self.isLoading);
-        }
-        else{
-          //tell them what they did wrong
-          self.isLoading = false;
-          alert("Ummm something went wrong behind the scenes. Email us and tell us: "+response.data.message);
-        }
-      })
-      .catch(function (error) {
-        // console.log(error);
-      });
+      //is it actually filled out lol
+      this.checkBookingOrg();
+      this.checkBookingContactName();
+      this.checkBookingContactPhoneNumber();
+      this.checkBookingContactEmail();
+      this.checkBookingNameOfEvent();
+      this.checkBookingDateOfEvent();
+      this.checkBookingTimeOfEvent();
+      this.checkBookingLocationOfEvent();
+      if(this.bookingOrgFailed || this.bookingContactNameFailed || this.bookingContactPhoneNumberFailed || this.bookingContactEmailFailed || this.bookingNameOfEventFailed || this.bookingDateOfEventFailed || this.bookingTimeOfEventFailed || this.bookingLocationOfEventFailed){
+        //idk something maybe?
+      }
+      else{
+        this.isLoading = true;
+        var self = this;
+        axios.post('https://gleeclub.gatech.edu/api.php?action=gigreq', {
+          choir: 'glee',
+          bookingOrg: self.bookingOrg,
+          bookingContactName: self.bookingContactName,
+          bookingContactPhoneNumber: self.bookingContactPhoneNumber,
+          bookingContactEmail: self.bookingContactEmail,
+          bookingNameOfEvent: self.bookingNameOfEvent,
+          bookingDateOfEventUnix: self.bookingDateOfEventUnix,
+          bookingLocationOfEvent: self.bookingLocationOfEvent,
+          bookingComments: self.bookingComments
+        })
+        .then(function (response) {
+          console.log(response);
+          if(response.data.status == "ok"){
+            //do something nice for the user
+            // console.log("we gucci fam");
+            self.submitted = true;
+            self.isLoading = false;
+            // console.log("submitted", self.submitted);
+            // console.log("isLoading", self.isLoading);
+          }
+          else{
+            //tell them what they did wrong
+            self.isLoading = false;
+            alert("Ummm something went wrong behind the scenes. Email us and tell us: "+response.data.message);
+          }
+        })
+        .catch(function (error) {
+          // console.log(error);
+        });
+      }//end else
     },
     checkBookingOrg: function(){
       //check the org name
