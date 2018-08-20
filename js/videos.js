@@ -18,12 +18,12 @@ var videoapp = new Vue({
   },
   mounted(){
   	var self = this;
-    axios.post('https://gleeclub.gatech.edu/api.php?action=publicsongs', {
+    axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicsongs', {
       choir: 'glee'
     })
     .then(function (response) {
       self.rep = response.data.songs;
-      console.log(response);
+      //console.log(response);
     })
     .catch(function (error) {
       console.log(error);

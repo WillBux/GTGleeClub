@@ -3,7 +3,7 @@ var months = ['January','February','March','April','May','June','July','August',
 
 Vue.component('event', {
 	props:['eventprop'],
-	template: '<div class="event"><h3>{{eventprop.name}}</h3><p>{{humanTime(eventprop.time)}}</p><p class="location">{{eventprop.location}}</p><p>{{eventprop.description}}</p><p><a href="#">Put in your calendar and smoke it.</a></p></div>',
+	template: '<section class="section"><h3 class="title">{{eventprop.name}}</h3><p class="subtitle">{{humanTime(eventprop.time)}}</p><p class="location">{{eventprop.location}}</p><p>{{eventprop.description}}</p><p><a href="#">Put in your calendar and smoke it.</a></p></section>',
 	methods:{
 		humanTime: function(jsTime){
 			//Friday, March 23, 2018 at 8:00pm
@@ -30,7 +30,7 @@ var eventsapp = new Vue({
   },
   mounted(){
   	var self = this;
-  	axios.post('https://gleeclub.gatech.edu/api.php?action=publicevents', {
+  	axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicevents', {
   	  choir: 'glee'
   	})
   	.then(function (response) {
