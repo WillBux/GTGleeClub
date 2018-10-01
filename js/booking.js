@@ -91,7 +91,8 @@ var bookingapp = new Vue({
     },
     checkBookingContactPhoneNumber: function(){
       //check the phone number
-      if(this.bookingContactPhoneNumber > 0) this.bookingContactPhoneNumberFailed = false;
+      var regex = /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/;
+      if(regex.test(this.bookingContactPhoneNumber)) this.bookingContactPhoneNumberFailed = false;
       else this.bookingContactPhoneNumberFailed = true;
     },
     checkBookingContactEmail: function(){
