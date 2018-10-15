@@ -28,6 +28,17 @@ var indexapp = new Vue({
       thereAreEvents: false
   	}
   },
+  methods:{
+    humanTime: function(jsTime){
+      //Friday, March 23, 2018 at 8:00pm
+      jsTime = jsTime*1000.0;
+      var tempDate = new Date();
+      tempDate.setTime(jsTime);
+      var ampm;
+      tempDate.getHours()<12 ? ampm="am" : ampm="pm";
+      return ""+days[tempDate.getDay()]+", "+months[tempDate.getMonth()]+" "+tempDate.getDate()+", "+tempDate.getFullYear()+" at "+(tempDate.getHours()%12)+":"+(tempDate.getMinutes()<10 ? "0"+tempDate.getMinutes() : tempDate.getMinutes())+ampm;
+    }
+  },
   mounted(){
   	var self = this;
     axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicevents', {

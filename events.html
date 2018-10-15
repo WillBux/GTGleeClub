@@ -43,15 +43,19 @@
 	<section class="section">
 		<div id="container" class="container">
 			<div v-if="thereAreEvents">
-				<p>We perform all the time hither and thither, sometimes open to the public and sometimes not. Please come see us at any of the following events!</p><br/>
-					<event
-						v-for="item in events"
-			      		v-bind:eventprop="item"
-			      		v-bind:key="item.id">
-			      	</event>
-		    </div>
-		    <p v-else>Looks like there aren't any events coming up that you can come to, but check back again soon!</p>
-		</div>
+				<div class="event"
+					v-for="item in events"
+					v-bind:key="item.id">
+					<h3 class="has-text-weight-bold is-size-5">{{item.name}}</h3>
+					<p>{{humanTime(item.time)}}</p>
+					<p class="location">{{item.location}}</p><p>{{item.summary}}</p>
+					<p>
+						<a target="_blank" :href="'https://gleeclub.gatech.edu/buzz/api.php?action=calendar&event='+item.id">Put in your calendar and smoke it.</a>
+					</p><br/>
+				</div>
+	      	</div>
+	      	<p v-else>We don't have anything coming up, but check back closer to when the semester is going to start.</p>
+	  	</div>
 	</section>
 	</div><!-- vue -->
 	<!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

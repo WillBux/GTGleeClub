@@ -64,14 +64,19 @@
 				<h1 class="title">Upcoming Events</h1>
 				<p class="subtitle">Come see us live at our next event!</p>
 					<div v-if="thereAreEvents">
-						<event
+						<div class="event"
 							v-for="item in events"
-				      		v-bind:eventprop="item"
-				      		v-bind:key="item.id">
-				      	</event>
+							v-bind:key="item.id">
+							<h3 class="has-text-weight-bold is-size-5">{{item.name}}</h3>
+							<p>{{humanTime(item.time)}}</p>
+							<p class="location">{{item.location}}</p><p>{{item.summary}}</p>
+							<p>
+								<a target="_blank" :href="'https://gleeclub.gatech.edu/buzz/api.php?action=calendar&event='+item.id">Put in your calendar and smoke it.</a>
+							</p><br/>
+						</div>
 				      	<br><p>See all the other events <a href="events.html">here</a>.</p>
 			      </div>
-			      	<p v-else>We don't have anything coming up, but check back closer to when the semester is going to start.</p>
+			      <p v-else>We don't have anything coming up, but check back closer to when the semester is going to start.</p>
 			</div>
 		</section>
 		<section class="section">
@@ -94,7 +99,7 @@
 				<ul>
 					<li><a target="_blank" href="https://store.cdbaby.com/cd/georgiatechgleeclub2">CD Baby</a></li>
 					<li><a target="_blank" href="https://itunes.apple.com/us/artist/georgia-tech-glee-club/488368538">iTunes</a></li>
-					<li>You can also come to a concert and buy a <span style="text-decoration:line-through;">beer</span> milk stein!</li>
+					<!-- <li>You can also come to a concert and buy a <span style="text-decoration:line-through;">beer</span> milk stein!</li> -->
 				</ul>
 			</div>
 		</section>
