@@ -63,15 +63,20 @@
 			<div class="container">
 				<h1 class="title">Upcoming Events</h1>
 				<p class="subtitle">Come see us live at our next event!</p>
-					<div v-if="thereAreEvents">
-						<event
+					<div v-if="thereAreEvents" class="columns">
+						<div class="event column"
 							v-for="item in events"
-				      		v-bind:eventprop="item"
-				      		v-bind:key="item.id">
-				      	</event>
-				      	<br><p>See all the other events <a href="events.html">here</a>.</p>
+							v-bind:key="item.id">
+							<h3 class="has-text-weight-bold is-size-5">{{item.name}}</h3>
+							<p>{{humanTime(item.time)}}</p>
+							<p class="location">{{item.location}}</p><p>{{item.summary}}</p>
+							<p>
+								<a target="_blank" :href="'https://gleeclub.gatech.edu/buzz/api.php?action=calendar&event='+item.id">Put that in your calendar and smoke it.</a>
+							</p><br/>
+						</div>				     
 			      </div>
-			      	<p v-else>We don't have anything coming up, but check back closer to when the semester is going to start.</p>
+			      <p>See all the other events <a href="events.html">here</a>.</p>
+			      <p v-else>We don't have anything coming up, but check back in a few weeks and maybe we will!</p>
 			</div>
 		</section>
 		<section class="section">
@@ -106,6 +111,7 @@
 					<li><i class="fab fa-youtube"></i> <a target="_blank" href="http://www.youtube.com/user/gtgleeclub?feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/YouTube/40x40_yt_white.png">YouTube</a></li>
 					<li><i class="fab fa-facebook-square"></i> <a target="_blank" href="https://www.facebook.com/GTgleeclub/">Facebook</a></li>
 					<li><i class="fab fa-instagram"></i> <a target="_blank" href="https://www.instagram.com/gtglee/">Instagram</a></li>
+					<li><i class="fab fa-spotify"></i> <a target="_blank" href="https://open.spotify.com/artist/5Tz9oXCro8bRGSvfZmZyAY?si=jw3Tp_0fTgu4_G0vyMAC_A">Spotify</a></li>
 				</ul>
 			</div>
 		</section>

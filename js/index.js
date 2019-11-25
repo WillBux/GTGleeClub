@@ -3,7 +3,7 @@ var months = ['January','February','March','April','May','June','July','August',
 
 Vue.component('event', {
 	props:['eventprop'],
-	template: '<div class="event"><h3>{{eventprop.name}}</h3><p>{{humanTime(eventprop.time)}}</p><p class="location">{{eventprop.location}}</p><p>{{eventprop.description}}</p><p><a href="#">Put in your calendar and smoke it.</a></p></div>',
+	template: '<div class="event"><h3 class="has-text-weight-bold is-size-5">{{eventprop.name}}</h3><p>{{humanTime(eventprop.time)}}</p><p class="location">{{eventprop.location}}</p><p>{{eventprop.summary}}</p><p><a href="#">Put in your calendar and smoke it.</a></p><br/></div>',
 	methods:{
 		humanTime: function(jsTime){
 			//Friday, March 23, 2018 at 8:00pm
@@ -28,9 +28,20 @@ var indexapp = new Vue({
       thereAreEvents: false
   	}
   },
+  methods:{
+    humanTime: function(jsTime){
+      //Friday, March 23, 2018 at 8:00pm
+      jsTime = jsTime*1000.0;
+      var tempDate = new Date();
+      tempDate.setTime(jsTime);
+      var ampm;
+      tempDate.getHours()<12 ? ampm="am" : ampm="pm";
+      return ""+days[tempDate.getDay()]+", "+months[tempDate.getMonth()]+" "+tempDate.getDate()+", "+tempDate.getFullYear()+" at "+(tempDate.getHours() > 12 ? tempDate.getHours()-12 : tempDate.getHours())+":"+(tempDate.getMinutes()<10 ? "0"+tempDate.getMinutes() : tempDate.getMinutes())+ampm;
+    }
+  },
   mounted(){
   	var self = this;
-    axios.post('https://gleeclub.gatech.edu/api.php?action=publicevents', {
+    axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicEvents', {
       choir: 'glee'
     })
     .then(function (response) {
