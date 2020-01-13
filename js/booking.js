@@ -47,35 +47,26 @@ var bookingapp = new Vue({
       else{
         this.isLoading = true;
         var self = this;
-        axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=gigRequest', {
-          choir: 'glee',
-          bookingOrg: self.bookingOrg,
-          bookingContactName: self.bookingContactName,
-          bookingContactPhoneNumber: self.bookingContactPhoneNumber,
-          bookingContactEmail: self.bookingContactEmail,
-          bookingNameOfEvent: self.bookingNameOfEvent,
-          bookingDateOfEventUnix: self.bookingDateOfEventUnix,
-          bookingLocationOfEvent: self.bookingLocationOfEvent,
-          bookingComments: self.bookingComments
+        axios.post('https://gleeclub.gatech.edu/cgi-bin/api/gig_requests', {
+          name: self.bookingNameOfEvent,
+          organization: self.bookingOrg,
+          contactName: self.bookingContactName,
+          contactPhone: self.bookingContactPhoneNumber,
+          contactEmail: self.bookingContactEmail,
+          startTime: self.bookingDateOfEventUnix * 1000,
+          location: self.bookingLocationOfEvent,
+          comments: self.bookingComments
         })
         .then(function (response) {
-          console.log(response);
-          if(response.data.status == "ok"){
-            //do something nice for the user
-            // console.log("we gucci fam");
-            self.submitted = true;
-            self.isLoading = false;
-            // console.log("submitted", self.submitted);
-            // console.log("isLoading", self.isLoading);
-          }
-          else{
-            //tell them what they did wrong
-            self.isLoading = false;
-            alert("Ummm something went wrong behind the scenes. Email us and tell us: "+response.data.message);
-          }
+          // do something nice for the user
+          // console.log("we gucci fam");
+          self.submitted = true;
+          self.isLoading = false;
         })
         .catch(function (error) {
-          // console.log(error);
+          //tell them what they did wrong
+          self.isLoading = false;
+          alert("Ummm something went wrong behind the scenes. Email us and tell us: "+response.data.message);
         });
       }//end else
     },
