@@ -33,13 +33,18 @@ var eventsapp = new Vue({
   	}
   },
   methods:{
+<<<<<<< HEAD
     humanTime: function(jsTime, granularity){
+=======
+    humanTime: function(jsTime){
+>>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
       //Friday, March 23, 2018 at 8:00pm
       jsTime = jsTime*1000.0;
       var tempDate = new Date();
       tempDate.setTime(jsTime);
       var ampm;
       tempDate.getHours()<12 ? ampm="am" : ampm="pm";
+<<<<<<< HEAD
       if (granularity == "day"){
         return ""+days[tempDate.getDay()]+", "+months[tempDate.getMonth()]+" "+tempDate.getDate();
       }
@@ -51,11 +56,18 @@ var eventsapp = new Vue({
           if(this.events[i].id == eventId) this.currentEvent = this.events[i];
         }
       }
+=======
+      return ""+days[tempDate.getDay()]+", "+months[tempDate.getMonth()]+" "+tempDate.getDate()+", "+tempDate.getFullYear()+" at "+(tempDate.getHours()%12)+":"+(tempDate.getMinutes()<10 ? "0"+tempDate.getMinutes() : tempDate.getMinutes())+ampm;
+>>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
     }
   },
   mounted(){
   	var self = this;
+<<<<<<< HEAD
   	axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicEvents', {
+=======
+  	axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicevents', {
+>>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
   	  choir: 'glee'
   	})
   	.then(function (response) {
