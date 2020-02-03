@@ -42,7 +42,6 @@
 	</nav>
 	<section class="section">
 		<div id="container" class="container">
-<<<<<<< HEAD
 			<h1 class="title">Upcoming Events</h1>
 			<div class="columns">
 				<div class="column is-one-quarter">
@@ -82,19 +81,6 @@
 						</div>
 					</div>
 		      	</div>
-=======
-			<div v-if="thereAreEvents">
-				<div class="event"
-					v-for="item in events"
-					v-bind:key="item.id">
-					<h3 class="has-text-weight-bold is-size-5">{{item.name}}</h3>
-					<p>{{humanTime(item.time)}}</p>
-					<p class="location">{{item.location}}</p><p>{{item.summary}}</p>
-					<p>
-						<a target="_blank" :href="'https://gleeclub.gatech.edu/buzz/api.php?action=calendar&event='+item.id">Put in your calendar and smoke it.</a>
-					</p><br/>
-				</div>
->>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
 	      	</div>
 	      	<p v-else>We don't have anything coming up, but check back closer to when the semester is going to start.</p>
 	  	</div>

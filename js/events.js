@@ -2,10 +2,10 @@ var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturda
 var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 Vue.component('event', {
-	props:['eventprop'],
-	template: '<section class="section"><h3 class="title">{{eventprop.name}}</h3><p class="subtitle">{{humanTime(eventprop.time)}}</p><p class="location">{{eventprop.location}}</p><p>{{eventprop.description}}</p><p><a href="#">Put in your calendar and smoke it.</a></p></section>',
-	methods:{
-		humanTime: function(jsTime, granularity){
+  props:['eventprop'],
+  template: '<section class="section"><h3 class="title">{{eventprop.name}}</h3><p class="subtitle">{{humanTime(eventprop.time)}}</p><p class="location">{{eventprop.location}}</p><p>{{eventprop.description}}</p><p><a href="#">Put in your calendar and smoke it.</a></p></section>',
+  methods:{
+    humanTime: function(jsTime, granularity){
       //Friday, March 23, 2018 at 8:00pm
       jsTime = jsTime*1000.0;
       var tempDate = new Date();
@@ -17,7 +17,7 @@ Vue.component('event', {
       }
       else return ""+days[tempDate.getDay()]+", "+months[tempDate.getMonth()]+" "+tempDate.getDate()+", "+tempDate.getFullYear()+" at "+(tempDate.getHours()%12)+":"+(tempDate.getMinutes()<10 ? "0"+tempDate.getMinutes() : tempDate.getMinutes())+ampm;
     }
-	}
+  }
 });
 
 Vue.config.devtools = true;
@@ -25,26 +25,21 @@ Vue.config.devtools = true;
 var eventsapp = new Vue({
   el: '#events',
   data(){
-  	return{
-  		events: '',
+    return{
+      events: '',
       burgerIsActive: false,
       thereAreEvents: false,
       currentEvent: 0
-  	}
+    }
   },
   methods:{
-<<<<<<< HEAD
     humanTime: function(jsTime, granularity){
-=======
-    humanTime: function(jsTime){
->>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
       //Friday, March 23, 2018 at 8:00pm
       jsTime = jsTime*1000.0;
       var tempDate = new Date();
       tempDate.setTime(jsTime);
       var ampm;
       tempDate.getHours()<12 ? ampm="am" : ampm="pm";
-<<<<<<< HEAD
       if (granularity == "day"){
         return ""+days[tempDate.getDay()]+", "+months[tempDate.getMonth()]+" "+tempDate.getDate();
       }
@@ -56,28 +51,22 @@ var eventsapp = new Vue({
           if(this.events[i].id == eventId) this.currentEvent = this.events[i];
         }
       }
-=======
-      return ""+days[tempDate.getDay()]+", "+months[tempDate.getMonth()]+" "+tempDate.getDate()+", "+tempDate.getFullYear()+" at "+(tempDate.getHours()%12)+":"+(tempDate.getMinutes()<10 ? "0"+tempDate.getMinutes() : tempDate.getMinutes())+ampm;
->>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
     }
   },
   mounted(){
-  	var self = this;
-<<<<<<< HEAD
-  	axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicEvents', {
-=======
-  	axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicevents', {
->>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
-  	  choir: 'glee'
-  	})
-  	.then(function (response) {
-  	  self.events = response.data.events;
+    var self = this;
+    axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicEvents', {
+      choir: 'glee'
+    })
+    .then(function (response) {
+      self.events = response.data.events;
       if(self.events.length) self.thereAreEvents = true;
-  	  // console.log(response);
+      // console.log(response);
       self.currentEvent = self.events[0];
-  	})
-  	.catch(function (error) {
-  	  console.log(error);
-  	});
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 });
+

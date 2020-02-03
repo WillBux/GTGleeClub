@@ -63,8 +63,8 @@
 			<div class="container">
 				<h1 class="title">Upcoming Events</h1>
 				<p class="subtitle">Come see us live at our next event!</p>
-					<div v-if="thereAreEvents">
-						<div class="event"
+					<div v-if="thereAreEvents" class="columns">
+						<div class="event column"
 							v-for="item in events"
 							v-bind:key="item.id">
 							<h3 class="has-text-weight-bold is-size-5">{{item.name}}</h3>
@@ -98,12 +98,8 @@
 				<ul>
 					<li><a target="_blank" href="https://store.cdbaby.com/cd/georgiatechgleeclub2">CD Baby</a></li>
 					<li><a target="_blank" href="https://itunes.apple.com/us/artist/georgia-tech-glee-club/488368538">iTunes</a></li>
-<<<<<<< HEAD
 					<li>You can also come to a concert and buy a <span style="text-decoration:line-through;">beer</span> milk stein!</li>
 					<li><a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q865PH2EAUEK2&source=url">Donate on PayPal</a></li>
-=======
-					<!-- <li>You can also come to a concert and buy a <span style="text-decoration:line-through;">beer</span> milk stein!</li> -->
->>>>>>> bc4fdd4b2e0e02d9960a0d890c59145a43d28a7f
 				</ul>
 			</div>
 		</section>
@@ -124,3 +120,4 @@
 	<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
+
