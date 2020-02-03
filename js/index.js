@@ -31,7 +31,7 @@ var indexapp = new Vue({
   methods:{
     humanTime: function(jsTime){
       //Friday, March 23, 2018 at 8:00pm
-      jsTime = jsTime*1000.0;
+      //jsTime = jsTime*1000.0;
       var tempDate = new Date();
       tempDate.setTime(jsTime);
       var ampm;
@@ -41,18 +41,16 @@ var indexapp = new Vue({
   },
   mounted(){
   	var self = this;
-    axios.post('https://gleeclub.gatech.edu/buzz/api.php?action=publicEvents', {
-      choir: 'glee'
-    })
+    axios.get('https://gleeclub.gatech.edu/cgi-bin/api/public_events')
     .then(function (response) {
-      // console.log(response);
+      console.log(response);
       self.events = [];
-      if(response.data.events[0]){
-        self.events[0] = response.data.events[0];
+      if(response.data[0]){
+        self.events[0] = response.data[0];
         self.thereAreEvents = true;
       }
-      if(response.data.events[1]) self.events[1] = response.data.events[1];
-      if(response.data.events[2]) self.events[2] = response.data.events[2];
+      if(response.data[1]) self.events[1] = response.data[1];
+      if(response.data[2]) self.events[2] = response.data[2];
     })
     .catch(function (error) {
       console.log(error);
