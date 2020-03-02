@@ -43,6 +43,7 @@ var eventsapp = new Vue({
     var self = this;
     axios.get('https://gleeclub.gatech.edu/cgi-bin/api/public_events')
     .then(function (response) {
+      response.data = response.data.filter(event => event.time > Date.now());
       self.events = response.data;
       if(self.events.length) self.thereAreEvents = true;
       // console.log(response);

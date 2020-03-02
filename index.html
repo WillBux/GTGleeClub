@@ -67,13 +67,16 @@
 						<div class="event column"
 							v-for="item in events"
 							v-bind:key="item.id">
-							<h3 class="has-text-weight-bold is-size-5">{{item.name}}</h3>
-							<p>{{humanTime(item.time)}}</p>
-							<p class="location">{{item.location}}</p><p>{{item.summary}}</p>
+							<div class="box">
+								<h3 class="has-text-weight-bold is-size-5 has-text-centered">{{item.name}}</h3>
+								<p><i class="fas fa-clock"></i> {{humanTime(item.time)}}</p>
+								<p class="location"><i class="fas fa-map-marker-alt"></i> {{item.location}}</p>
+								<p>{{item.summary}}</p>
+							</div>
 							<!--<p>
 								<a target="_blank" :href="'https://gleeclub.gatech.edu/buzz/api.php?action=calendar&event='+item.id">Put that in your calendar and smoke it.</a>
 							</p><br/>-->
-						</div>				     
+						</div>			     
 			      </div>
 			      <p>See all the other events <a href="events.html">here</a>.</p>
 			      <p v-else>We don't have anything coming up, but check back in a few weeks and maybe we will!</p>

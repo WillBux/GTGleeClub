@@ -44,6 +44,7 @@ var indexapp = new Vue({
     axios.get('https://gleeclub.gatech.edu/cgi-bin/api/public_events')
     .then(function (response) {
       console.log(response);
+      response.data = response.data.filter(event => event.time > Date.now());
       self.events = [];
       if(response.data[0]){
         self.events[0] = response.data[0];
