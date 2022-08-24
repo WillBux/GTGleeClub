@@ -1,0 +1,13 @@
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
+// Update Bulma's global variables
+$primary: #b4a46a;
+
+// Import only what you need from Bulma
+@import '../node_modules/bulma/bulma.sass';
+
+.has-bg-img {
+  background: url('images/IMG_3277b.jpg') center center;
+  background-size: cover;
+}

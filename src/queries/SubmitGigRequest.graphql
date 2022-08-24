@@ -1,0 +1,5 @@
+mutation SubmitGigRequest($request: NewGigRequest!) {
+  submitGigRequest(request: $request) {
+    id
+  }
+}

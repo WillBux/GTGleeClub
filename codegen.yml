@@ -1,0 +1,13 @@
+schema: https://api.glubhub.org
+documents: './src/**/*.graphql'
+generates:
+  ./src/gql-operations.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request
+    config:
+      scalars:
+        DateScalar: string
+        TimeScalar: string
+        UniformColor: string

@@ -1,0 +1,18 @@
+query PublicEvents {
+  publicEvents {
+    id
+    name
+    location
+    summary
+    description
+    startTime {
+      date
+      time
+    }
+    endTime {
+      date
+      time
+    }
+    invite
+  }
+}

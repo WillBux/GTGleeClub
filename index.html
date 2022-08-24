@@ -1,126 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-	<link rel="stylesheet" type="text/css" href="css/custom.css">-->
-	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/bulma.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-	<!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>Georgia Tech Glee Club</title>
-	<style type="text/css">
-		.has-bg-img { background: url('images/IMG_3277b.jpg')center center; background-size:cover; }
-	</style>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="/src/style.scss" />
+
+  <title>Georgia Tech Glee Club</title>
 </head>
+
 <body>
-	<div id="minievents">
-	<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-	  <div class="navbar-brand">
-	    <a class="navbar-item" href="index.html">
-		<span class="icon is-small" style="width: 3vw;">
-			<i class="fas fa-home"></i>
-		</span>
-	    </a>
-
-	    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" v-bind:class="{'is-active': burgerIsActive}" v-on:click="burgerIsActive = !burgerIsActive">
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	      <span aria-hidden="true"></span>
-	    </a>
-	  </div>
-	  <div class="navbar-menu" v-bind:class="{'is-active': burgerIsActive}">
-	    <div class="navbar-start">
-			<a class="navbar-item" href="about.html">About</a>
-			<a class="navbar-item" href="videos.html">Videos</a>
-			<a class="navbar-item" href="events.html">Events</a>
-			<a class="navbar-item" href="booking.html">Booking</a>
-			<a class="navbar-item" href="contact.html">Contact</a>
-	    </div>
-
-	    <div class="navbar-end">
-	      <!-- navbar items -->
-	    </div>
-	  </div>
-	</nav>
-	<div> <!-- container -->
-		<section class="hero is-medium is-bold has-bg-img">
-		<div class="hero-body">
-			<div class="container">
-				<!-- <h1 class="title" style="text-shadow:0px 0px 10px rgba(255,255,255,.5)">The Georgia Tech Glee Club</h1>
-				<h2 class="subtitle">is gr9</h2> -->
-			</div>
-		</div>
-		</section>
-		<section class="section">
-			<div class="container">
-				<h1 class="title">Georgia Tech Glee Club</h1>
-				<p class="subtitle">The Georgia Tech Glee Club formed as an all-male group in 1906, making it the oldest student organization on campus. Composed of graduate and undergraduate students, the members of the group represent all of the Institute's colleges. In recent years, the Glee Club has performed at prestigious events both at Georgia Tech and throughout the Atlanta community and has traveled to locations such as New York City, Hawaii, and the UK, spreading what it means to be a Ramblin' Wreck and a helluva engineer!</p>
-			</div>
-		</section>
-		<section class="section">
-			<div class="container">
-				<h1 class="title">Upcoming Events</h1>
-				<p class="subtitle">Come see us live at our next event!</p>
-					<div v-if="thereAreEvents" class="columns">
-						<div class="event column"
-							v-for="item in events"
-							v-bind:key="item.id">
-							<div class="box">
-								<h3 class="has-text-weight-bold is-size-5 has-text-centered">{{item.name}}</h3>
-								<p><i class="fas fa-clock"></i> {{humanTime(item.time)}}</p>
-								<p class="location"><i class="fas fa-map-marker-alt"></i> {{item.location}}</p>
-								<p>{{item.summary}}</p>
-							</div>
-							<!--<p>
-								<a target="_blank" :href="'https://gleeclub.gatech.edu/buzz/api.php?action=calendar&event='+item.id">Put that in your calendar and smoke it.</a>
-							</p><br/>-->
-						</div>			     
-			      </div>
-			      <p>See all the other events <a href="events.html">here</a>.</p>
-			      <p v-else>We don't have anything coming up, but check back in a few weeks and maybe we will!</p>
-			</div>
-		</section>
-		<section class="section">
-			<div class="container">
-				<h1 class="title">Be a Groupie</h1>
-				<p class="subtitle ">Join the Glee Club Groupies mailing list to receive three or four emails a year about our major events, tours, and other big news. It's a great way to keep in touch with the happenings of the Glee Club with a minimal time commitment. You can unsubscribe at any time, no hard feelings.</p>
-				<p>Sign up with Mailchimp here:</p>
-				<br><a class="button is-primary is-outlined" href="http://eepurl.com/gHYhEv" target="_blank">
-					<span class="icon is-small">
-      					<i class="far fa-envelope"></i>
-    				</span>
-    				<span>Become a groupie</span>
-    			</a>
-			</div>
-		</section>	
-		<section class="section">
-			<div class="container">
-				<h1 class="title">Give Us Money via:</h1>
-				<ul>
-					<li><a target="_blank" href="https://store.cdbaby.com/cd/georgiatechgleeclub2">CD Baby</a></li>
-					<li><a target="_blank" href="https://itunes.apple.com/us/artist/georgia-tech-glee-club/488368538">iTunes</a></li>
-					<li>You can also come to a concert and buy a <span style="text-decoration:line-through;">beer</span> milk stein!</li>
-					<li><a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Q865PH2EAUEK2&source=url">Donate on PayPal</a></li>
-				</ul>
-			</div>
-		</section>
-		<section class="section">
-			<div class="container">
-				<h1 class="title">Like and Subscribe</h1>
-				<ul>
-					<li><i class="fab fa-twitter"></i> <a target="_blank" href="http://www.twitter.com/GTglee">Twitter</a></li>
-					<li><i class="fab fa-youtube"></i> <a target="_blank" href="http://www.youtube.com/user/gtgleeclub?feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/YouTube/40x40_yt_white.png">YouTube</a></li>
-					<li><i class="fab fa-facebook-square"></i> <a target="_blank" href="https://www.facebook.com/GTgleeclub/">Facebook</a></li>
-					<li><i class="fab fa-instagram"></i> <a target="_blank" href="https://www.instagram.com/gtglee/">Instagram</a></li>
-					<li><i class="fab fa-spotify"></i> <a target="_blank" href="https://open.spotify.com/artist/5Tz9oXCro8bRGSvfZmZyAY?si=jw3Tp_0fTgu4_G0vyMAC_A">Spotify</a></li>
-				</ul>
-			</div>
-		</section>
-		</div><!-- container -->
-	</div><!-- vue -->
-	<script type="text/javascript" src="js/index.js"></script>
+  <script type="module" src="/src/main.ts"></script>
 </body>
-</html>
 
+</html>

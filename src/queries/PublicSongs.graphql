@@ -1,0 +1,10 @@
+query PublicSongs {
+  publicSongs {
+    title
+    current
+    videos {
+      title
+      url
+    }
+  }
+}
