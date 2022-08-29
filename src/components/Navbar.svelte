@@ -12,6 +12,7 @@
 
   window.addEventListener('hashchange', (e) => {
     hash = e.newURL
+    burgerIsActive = false
   })
 </script>
 
