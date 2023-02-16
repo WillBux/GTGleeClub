@@ -21,16 +21,18 @@
       <tbody>
         {#each songs as song}
           <tr>
-            <td>{song.title}</td>
-            <td>
-              {#each song.videos as video}
-                <p>
-                  <a target="_blank" href="https://youtu.be/{video.url}">
-                    {video.title}
-                  </a>
-                </p>
-              {/each}
-            </td>
+            {#if song.current}
+                <td>{song.title}</td>
+                <td>
+                {#each song.videos as video}
+                    <p>
+                    <a target="_blank" href="https://youtu.be/{video.url}">
+                        {video.title}
+                    </a>
+                    </p>
+                {/each}
+                </td>
+            {/if}
           </tr>
         {/each}
       </tbody>

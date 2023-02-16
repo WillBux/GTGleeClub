@@ -1,10 +1,10 @@
 <script lang="ts">
   const links = [
-    {
-      icon: 'fa-twitter',
-      link: 'http://www.twitter.com/GTglee',
-      name: 'Twitter',
-    },
+    //{
+    //  icon: 'fa-twitter',
+    //  link: 'http://www.twitter.com/GTglee',
+    //  name: 'Twitter',
+    //},
     {
       icon: 'fa-youtube',
       link: 'http://www.youtube.com/user/gtgleeclub?feature=creators_cornier-http%3A//s.ytimg.com/yt/img/creators_corner/YouTube/40x40_yt_white.png',
@@ -17,7 +17,7 @@
     },
     {
       icon: 'fa-instagram',
-      link: 'https://www.instagram.com/gtglee/',
+      link: 'https://www.instagram.com/gtgleeclub/',
       name: 'Instagram',
     },
     {
@@ -25,6 +25,11 @@
       link: 'https://open.spotify.com/artist/5Tz9oXCro8bRGSvfZmZyAY?si=jw3Tp_0fTgu4_G0vyMAC_A',
       name: 'Spotify',
     },
+    {
+      icon: 'fa-itunes',
+      link: 'https://itunes.apple.com/us/artist/georgia-tech-glee-club/488368538',
+      name: 'iTunes',
+    }
   ]
 </script>
 
