@@ -19,9 +19,5 @@ jobs:
       shell: bash
     - run : git config user.email github-actions@github.com
       shell: bash
-    - run : git worktree add build
-      shell: bash
-    - run : git commit -m "Automatic Deploy action run by github-actions"
-      shell: bash
-    - run : git push origin HEAD:deploy --force
+    - run : npm run deploy
       shell: bash
