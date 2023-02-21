@@ -18,6 +18,10 @@
     .catch((error) => {
       alert(`Failed to load upcoming events: ${error}`)
     })
+
+  function goTop() {
+      document.body.scrollIntoView()
+  }
 </script>
 
 <section class="section">
@@ -82,5 +86,9 @@
         semester is going to start.
       </p>
     {/if}
+    <p>
+      Can't find an event you like?
+      <a href='/#/booking' on:click={goTop}>Book us!</a>
+    </p>
   </div>
 </section>
