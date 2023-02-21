@@ -11,6 +11,8 @@
     .then((data) => {
       upcomingEvents = data.publicEvents.filter(
         (e) => datetimeToDayjs(e.startTime) > now()
+      ).sort(
+        (a,b) => new Date(a.startTime.date) - new Date(b.startTime.date)
       )
     })
     .catch((error) => {
